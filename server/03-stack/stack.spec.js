@@ -1,21 +1,18 @@
 const LIMIT = 3;
 
 let makeStack = () => {
-  let size = 0;
   const array = [];
   return {
-    isEmpty: () => size === 0,
-    push: (number) => {
-      size++;
-      array.push(number);
-      if (size > LIMIT) throw new Error('Cannot exceed ', LIMIT);
+    isEmpty: () => array.length === 0,
+    push: (value) => {
+      array.push(value);
+      if (array.length > LIMIT) throw new Error('Cannot exceed ', LIMIT);
     },
     pop: () => {
-      if (size <= 0) throw new Error('Cannot pop an empty stack');
-      size--;
+      if (array.length <= 0) throw new Error('Cannot pop an empty stack');
       return array.pop();
     },
-    size: () => size
+    size: () => array.length
   };
 };
 
