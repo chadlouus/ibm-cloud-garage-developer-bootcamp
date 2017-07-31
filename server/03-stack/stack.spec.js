@@ -1,40 +1,17 @@
-const makeStack = () => {
- let queue = 0;
- const isEmpty = () => queue === 0;
- const push = () => queue++;
- const size = () => queue;
-
- return {
-   isEmpty,
-   push,
-   size
- };
+let stack = {
+  isEmpty: () => true
 };
 
-let stack;
-
 describe.only('the stack spec', () => {
- beforeEach(() => {
-   stack = makeStack();
- });
-
  it('starts empty', () => {
    stack.isEmpty().should.be.true();
  });
 
- it('starts with stack size 0', () => {
-   stack.size().should.equal(0);
- });
+ it('starts with stack size 0');
 
- it('is not empty when pushed', () => {
-   stack.push(4);
-   stack.isEmpty().should.be.false();
- });
+ it('is not empty when pushed');
 
- it('leaves stack size 1 when pushed', () => {
-   stack.push();
-   stack.size().should.equal(1);
- });
+ it('leaves stack size 1 when pushed');
 
  it('leaves stack empty when pushed and popped');
 
