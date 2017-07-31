@@ -1,9 +1,7 @@
 let stackFactory = () => {
   let size = 0;
   return {
-    isEmpty: () => {
-      return size === 0;
-    },
+    isEmpty: () => size === 0,
     push: () => {
       size++;
     },
@@ -24,7 +22,6 @@ describe.only('the stack spec', () => {
 
  it('is not empty when pushed', () => {
    stack.push();
-   console.log('size2 is ', stack.size());
    stack.isEmpty().should.be.false();
  });
 
