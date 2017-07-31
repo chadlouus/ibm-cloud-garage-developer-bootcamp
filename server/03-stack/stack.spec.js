@@ -1,5 +1,8 @@
 let stack = {
-  isEmpty: () => true
+  isEmpty: () => true,
+  size: () => {
+    return 0;
+  }
 };
 
 describe.only('the stack spec', () => {
@@ -7,7 +10,9 @@ describe.only('the stack spec', () => {
    stack.isEmpty().should.be.true();
  });
 
- it('starts with stack size 0');
+ it('starts with stack size 0', () => {
+   stack.size().should.equal(0);
+ });
 
  it('is not empty when pushed');
 
