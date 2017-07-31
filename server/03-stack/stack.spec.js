@@ -1,9 +1,12 @@
+const LIMIT = 3;
+
 let makeStack = () => {
   let size = 0;
   return {
     isEmpty: () => size === 0,
     push: () => {
       size++;
+      if (size > LIMIT) throw new Error('Cannot exceed ', LIMIT);
     },
     pop: () => {
       size--;
@@ -48,7 +51,14 @@ describe.only('the stack spec', () => {
    stack.size().should.equal(0);
  });
 
- it('overflows');
+ it('overflows', () => {
+   stack.push();
+   stack.push();
+   stack.push();
+   (() => {
+     stack.push();
+   }).should.throw('Cannot exceed ', LIMIT);
+ });
 
  it('under-flows');
 
