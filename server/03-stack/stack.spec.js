@@ -1,9 +1,17 @@
-let stack = {
-  isEmpty: () => true,
-  size: () => {
-    return 0;
-  }
+let stackFactory = () => {
+  let size = 0;
+  return {
+    isEmpty: () => {
+      return size === 0;
+    },
+    push: () => {
+      size++;
+    },
+    size: () => size
+  };
 };
+
+let stack = stackFactory();
 
 describe.only('the stack spec', () => {
  it('starts empty', () => {
@@ -14,7 +22,11 @@ describe.only('the stack spec', () => {
    stack.size().should.equal(0);
  });
 
- it('is not empty when pushed');
+ it('is not empty when pushed', () => {
+   stack.push();
+   console.log('size2 is ', stack.size());
+   stack.isEmpty().should.be.false();
+ });
 
  it('leaves stack size 1 when pushed');
 
