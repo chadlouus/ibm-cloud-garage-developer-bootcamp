@@ -1,12 +1,15 @@
-const LIMIT = 3;
-
 let makeStack = () => {
   const array = [];
+  let capacity = 3;
   return {
+    setCapacity: (value) => {
+      if (value < 0) throw new Error('capacity must be positive values only');
+      capacity = value;
+    },
     isEmpty: () => array.length === 0,
     push: (value) => {
       array.push(value);
-      if (array.length > LIMIT) throw new Error('Cannot exceed ', LIMIT);
+      if (array.length > capacity) throw new Error('Cannot exceed ', capacity);
     },
     pop: () => {
       if (array.length <= 0) throw new Error('Cannot pop an empty stack');
@@ -61,9 +64,9 @@ describe.only('the stack spec', () => {
    };
    // (() => {
    //      stack.push();
-   //    }).should.throw('Cannot exceed ', LIMIT);
-   //stack.push.should.throw('Cannot exceed ', LIMIT);
-   overFlowFunction.should.throw('Cannot exceed ', LIMIT);
+   //    }).should.throw('Cannot exceed ', capacity);
+   //stack.push.should.throw('Cannot exceed ', capacity);
+   overFlowFunction.should.throw('Cannot exceed ', stack.capacity);
  });
 
  it('under-flows', () => {
@@ -74,15 +77,28 @@ describe.only('the stack spec', () => {
  });
 
  it('pops the same one pushed', () => {
-   stack.push(3);
-   stack.pop().should.equal(3);
-   stack.push('red');
-   stack.pop().should.equal('red');
+   let valueToPush = 3;
+   stack.push(valueToPush);
+   stack.pop().should.equal(valueToPush);
+   valueToPush = 'red';
+   stack.push(valueToPush);
+   stack.pop().should.equal(valueToPush);
  });
 
- it('pops the same two pushed');
+ it('pops the same two pushed', () => {
+   const value1 = '5';
+   const value2 = 'blue';
+   stack.push(value1);
+   stack.push(value2);
+   stack.pop().should.equal(value2);
+   stack.pop().should.equal(value1);
+ });
 
- it('accepts only positive capacity');
+ it('accepts only positive capacity', () => {
+   (() => {
+     stack.setCapacity(-3);
+   }).should.throw('capacity must be positive values only');
+ });
 
 });
 
