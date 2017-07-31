@@ -8,13 +8,14 @@ let makeStack = () => {
     },
     isEmpty: () => array.length === 0,
     push: (value) => {
+      if (array.length >= capacity) throw new Error('Cannot exceed ', capacity);
       array.push(value);
-      if (array.length > capacity) throw new Error('Cannot exceed ', capacity);
     },
     pop: () => {
       if (array.length <= 0) throw new Error('Cannot pop an empty stack');
       return array.pop();
     },
+    capacity: () => capacity,
     size: () => array.length
   };
 };
@@ -56,9 +57,9 @@ describe.only('the stack spec', () => {
  });
 
  it('overflows', () => {
-   stack.push();
-   stack.push();
-   stack.push();
+   for (let i = 0; i < stack.capacity(); i++) {
+     stack.push();
+   }
    const overFlowFunction = () => {
      stack.push();
    };
