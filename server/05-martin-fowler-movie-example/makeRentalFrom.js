@@ -1,41 +1,42 @@
 import {REGULAR, NEW_RELEASE, CHILDRENS} from './movie-codes';
 
 let makeRentalFrom = (movie, daysRented) => {
-  const amountFor = (subTotal) => {
+  const getCharge = () => {
+    let total = 0;
     //noinspection Eslint
     let rental = this;
     switch(movie.priceCode) {
       case REGULAR:
 
-        subTotal += 2;
+        total += 2;
         if(daysRented > 2) {
-          subTotal += (daysRented - 2) * 1.5;
+          total += (daysRented - 2) * 1.5;
         }
         break;
 
       case NEW_RELEASE:
 
-        subTotal += daysRented * 3;
+        total += daysRented * 3;
         break;
 
       case CHILDRENS:
 
-        subTotal += 1.5;
+        total += 1.5;
         if(daysRented > 3) {
-          subTotal += (daysRented - 3) * 1.5;
+          total += (daysRented - 3) * 1.5;
         }
 
         break;
       default:
 
     }
-    return subTotal;
+    return total;
   }
 
   return {
     get movie() { return movie; },
     get daysRented() { return daysRented; },
-    amountFor
+    getCharge
   };
 };
 

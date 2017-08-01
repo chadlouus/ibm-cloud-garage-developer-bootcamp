@@ -39,7 +39,7 @@ describe.only('martin fowler\'s movie refactoring example', () => {
   });
 
   it('is protected from regressions', () => {
-    let expected = 'Rental Record for Dummy Customer, Jr.\n' +
+    let expectedOutput = 'Rental Record for Dummy Customer, Jr.\n' +
         '\tChildrens1\t1.5\n' +
         '\tChildrens2\t1.5\n' +
         '\tChildrens3\t1.5\n' +
@@ -64,6 +64,6 @@ describe.only('martin fowler\'s movie refactoring example', () => {
     customer.addRental(makeRentalFrom(newRelease2, DAYS_RENTED_IS_2));
     customer.addRental(makeRentalFrom(newRelease3, DAYS_RENTED_IS_3));
 
-    (expected).should.equal(customer.statement());
+    (expectedOutput).should.equal(customer.statement());
   });
 });
