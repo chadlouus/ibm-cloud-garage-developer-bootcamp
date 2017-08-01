@@ -1,29 +1,39 @@
 import {STACK_OVERFLOW_ERROR, STACK_UNDERFLOW_ERROR, NEGATIVE_CAPACITY} from './stack-errors';
 
-let Stack = () => {
-  const stackArray = [];
-  let capacity = 3;
-  return {
-    isEmpty: () => stackArray.length === 0,
-    size: () => stackArray.length,
-    getCapacity: () => capacity,
-    push: (value) => {
-      if (stackArray.length >= capacity) {
+export class Stack {
+  constructor() {
+    this.stackArray = [];
+    this.capacity = 3;
+  }
+
+  isEmpty () {
+    return this.stackArray.length === 0;
+  }
+
+    size() {
+      return this.stackArray.length;
+    }
+
+    getCapacity() {
+      return this.capacity;
+    }
+
+    push(value) {
+      if (this.stackArray.length >= this.capacity) {
         throw new Error(STACK_OVERFLOW_ERROR);
       }
-      stackArray.push(value);
-    },
-    pop: () => {
-      if (stackArray.length <= 0) {
+      this.stackArray.push(value);
+    }
+
+    pop() {
+      if (this.stackArray.length <= 0) {
         throw new Error(STACK_UNDERFLOW_ERROR);
       }
-      return stackArray.pop();
-    },
-    setCapacity: (value) => {
-      if (value <= 0) throw new Error(NEGATIVE_CAPACITY);
-      capacity = value;
+      return this.stackArray.pop();
     }
-  };
-};
 
-export {Stack};
+    setCapacity(value) {
+      if (value <= 0) throw new Error(NEGATIVE_CAPACITY);
+      this.capacity = value;
+    }
+}

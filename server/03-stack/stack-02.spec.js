@@ -5,7 +5,7 @@ let stack;
 
 describe.only('the stack', () => {
   beforeEach(() => {
-    stack = Stack();
+    stack = new Stack();
   });
   it('starts empty', () => {
     stack.isEmpty().should.be.true();
@@ -35,10 +35,14 @@ describe.only('the stack', () => {
     stack.push();
     stack.push();
     stack.push();
-    (stack.push).should.throw(STACK_OVERFLOW_ERROR);
+    (() => {
+      stack.push();
+    }).should.throw(STACK_OVERFLOW_ERROR);
   });
   it('under-flows', () => {
-    stack.pop.should.throw(STACK_UNDERFLOW_ERROR);
+    (() => {
+      stack.pop();
+    }).should.throw(STACK_UNDERFLOW_ERROR);
   });
   it('pops the same one pushed', () => {
     stack.push(3);
