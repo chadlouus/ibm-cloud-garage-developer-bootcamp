@@ -1,11 +1,11 @@
-import {makeStack} from './stack';
+import {Stack} from './stack';
 import {STACK_OVERFLOW_ERROR, STACK_UNDERFLOW_ERROR, NEGATIVE_CAPACITY} from './stack-errors';
 
 let stack;
 
 describe.only('the stack', () => {
   beforeEach(() => {
-    stack = makeStack();
+    stack = Stack();
   });
   it('starts empty', () => {
     stack.isEmpty().should.be.true();

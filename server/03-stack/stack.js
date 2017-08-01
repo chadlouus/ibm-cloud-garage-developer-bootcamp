@@ -1,6 +1,6 @@
 import {STACK_OVERFLOW_ERROR, STACK_UNDERFLOW_ERROR, NEGATIVE_CAPACITY} from './stack-errors';
 
-let makeStack = () => {
+let Stack = () => {
   const stackArray = [];
   let capacity = 3;
   return {
@@ -26,4 +26,4 @@ let makeStack = () => {
   };
 };
 
-export {makeStack};
+export {Stack};
