@@ -1,5 +1,3 @@
-import {REGULAR, NEW_RELEASE, CHILDRENS} from './movie-codes';
-
 
 let makeCustomerFrom = (name) => {
   let rentals = [];
