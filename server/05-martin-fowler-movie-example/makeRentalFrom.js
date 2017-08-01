@@ -1,13 +1,11 @@
 
 let makeRentalFrom = (movie, daysRented) => {
-  const getCharge = () => {
-    return movie.getCharge(daysRented);
-  }
-
   return {
     get movie() { return movie; },
     get daysRented() { return daysRented; },
-    getCharge,
+    getCharge() {
+        return movie.getCharge(daysRented);
+      },
     getFrequentRenterPoints() {
       return movie.getFrequentRenterPoints(daysRented);
     }

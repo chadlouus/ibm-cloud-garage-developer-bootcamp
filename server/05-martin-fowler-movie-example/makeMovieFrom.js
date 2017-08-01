@@ -1,5 +1,14 @@
 import {REGULAR, NEW_RELEASE, CHILDRENS} from './movie-codes';
 
+const moviePriceCodes = {};
+moviePriceCodes[REGULAR] =  (daysRented) => {
+    let total = 2;
+    if (daysRented > 2) {
+      total += (daysRented - 2) * 1.5;
+    }
+    return total;
+};
+
 let makeMovieFrom = (title, somePriceCode) => {
   let priceCode = somePriceCode;
 
@@ -13,15 +22,16 @@ let makeMovieFrom = (title, somePriceCode) => {
     },
     getCharge(daysRented) {
       let total = 0;
-      //noinspection Eslint
+
+      const moviePriceCode = moviePriceCodes[priceCode];
+      console.log("movie price code is", priceCode, moviePriceCode);
+      if (moviePriceCode) {
+        total += moviePriceCode(daysRented);
+      }
       let rental = this;
       switch (priceCode) {
         case REGULAR:
 
-          total += 2;
-          if (daysRented > 2) {
-            total += (daysRented - 2) * 1.5;
-          }
           break;
 
         case NEW_RELEASE:
