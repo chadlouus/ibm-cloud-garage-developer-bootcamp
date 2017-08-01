@@ -9,6 +9,18 @@ moviePriceCodes[REGULAR] =  (daysRented) => {
     return total;
 };
 
+moviePriceCodes[NEW_RELEASE] =  (daysRented) => {
+  return daysRented * 3;
+};
+
+moviePriceCodes[CHILDRENS] =  (daysRented) => {
+  let total = 1.5;
+  if(daysRented > 3) {
+    total += (daysRented - 3) * 1.5;
+  }
+  return total;
+};
+
 let makeMovieFrom = (title, somePriceCode) => {
   let priceCode = somePriceCode;
 
@@ -24,31 +36,9 @@ let makeMovieFrom = (title, somePriceCode) => {
       let total = 0;
 
       const moviePriceCode = moviePriceCodes[priceCode];
-      console.log("movie price code is", priceCode, moviePriceCode);
+      console.log('movie price code is', priceCode, moviePriceCode);
       if (moviePriceCode) {
         total += moviePriceCode(daysRented);
-      }
-      let rental = this;
-      switch (priceCode) {
-        case REGULAR:
-
-          break;
-
-        case NEW_RELEASE:
-
-          total += daysRented * 3;
-          break;
-
-        case CHILDRENS:
-
-          total += 1.5;
-          if(daysRented > 3) {
-            total += (daysRented - 3) * 1.5;
-          }
-
-          break;
-        default:
-
       }
       return total;
     }
