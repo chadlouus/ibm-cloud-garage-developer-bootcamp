@@ -12,25 +12,33 @@ let makeCustomerFrom = (name) => {
     }
     return frequentRenterPoints;
   };
+
+  const getTotal = () => {
+    let total = 0;
+
+    for (let i = 0; i < rentals.length; i++) {
+      let rental = rentals[i];
+      total += rental.getCharge();
+    }
+    return total;
+  };
   return {
     get name() { return name; },
     addRental(rental) { rentals.push(rental); },
 
     statement() {
-      let total = 0;
       let statement = 'Rental Record for ' + name + '\n';
+      let total = 0;
 
       for (let i = 0; i < rentals.length; i++) {
         let rental = rentals[i];
 
         //show figures for this rental
         statement += '\t' + rental.movie.title + '\t' + rental.getCharge().toString(10) + '\n';
-
-        total += rental.getCharge();
       }
 
       //add footer lines
-      statement += 'Amount owed is ' + total.toString(10) + '\n';
+      statement += 'Amount owed is ' + getTotal().toString(10) + '\n';
       statement += 'You earned ' + String(getFrequentRenterPoints()) +
           ' frequent renter points';
 
