@@ -1,4 +1,5 @@
 import {Stack} from './stack';
+import {StackConst} from './stack-const';
 import {STACK_OVERFLOW_ERROR, STACK_UNDERFLOW_ERROR, NEGATIVE_CAPACITY} from './stack-errors';
 
 let stack;
