@@ -1,6 +1,11 @@
 import {REGULAR, NEW_RELEASE, CHILDRENS} from './movie-codes';
 
 let makeRentalFrom = (movie, daysRented) => {
+  const getFrequentRenterPoints = () => {
+    if ((movie.priceCode === NEW_RELEASE) && daysRented > 1) return 2;
+    return 1;
+
+  }
   const getCharge = () => {
     let total = 0;
     //noinspection Eslint
@@ -36,7 +41,8 @@ let makeRentalFrom = (movie, daysRented) => {
   return {
     get movie() { return movie; },
     get daysRented() { return daysRented; },
-    getCharge
+    getCharge,
+    getFrequentRenterPoints
   };
 };
 
