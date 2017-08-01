@@ -1,0 +1,5 @@
+const STACK_OVERFLOW_ERROR = 'Stack Overflow';
+const STACK_UNDERFLOW_ERROR = 'Stack Underflow';
+const NEGATIVE_CAPACITY = 'Negative Capacity';
+
+export {STACK_OVERFLOW_ERROR, STACK_UNDERFLOW_ERROR, NEGATIVE_CAPACITY};
