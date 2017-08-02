@@ -1,13 +1,14 @@
 import {
   STACK_OVERFLOW_ERROR,
   STACK_UNDERFLOW_ERROR,
-  NEGATIVE_CAPACITY
+  NEGATIVE_CAPACITY_ERROR
 } from './stack-errors';
 
 export class Stack {
+  //DEFAULT_CAPACITY = 3;
   constructor() {
     this.stackArray = [];
-    this.capacity = 3;
+    this.capacity = 3; //this.DEFAULT_CAPACITY;
   }
 
   isEmpty() {
@@ -37,7 +38,7 @@ export class Stack {
   }
 
   setCapacity(value) {
-    if (value <= 0) throw new Error(NEGATIVE_CAPACITY);
+    if (value <= 0) throw new Error(NEGATIVE_CAPACITY_ERROR);
     this.capacity = value;
   }
 }

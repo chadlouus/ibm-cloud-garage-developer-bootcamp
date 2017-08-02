@@ -1,4 +1,4 @@
-import {STACK_OVERFLOW_ERROR, STACK_UNDERFLOW_ERROR, NEGATIVE_CAPACITY} from './stack-errors';
+import {STACK_OVERFLOW_ERROR, STACK_UNDERFLOW_ERROR, NEGATIVE_CAPACITY_ERROR} from './stack-errors';
 
 let StackConst = () => {
   const stackArray = [];
@@ -19,7 +19,7 @@ let StackConst = () => {
         return stackArray.pop();
       };
   const setCapacity = (value) => {
-        if (value <= 0) throw new Error(NEGATIVE_CAPACITY);
+        if (value <= 0) throw new Error(NEGATIVE_CAPACITY_ERROR);
         capacity = value;
       };
   return {

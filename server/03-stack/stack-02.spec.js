@@ -1,10 +1,10 @@
 import {Stack} from './stack';
 import {StackConst} from './stack-const';
-import {STACK_OVERFLOW_ERROR, STACK_UNDERFLOW_ERROR, NEGATIVE_CAPACITY} from './stack-errors';
+import {STACK_OVERFLOW_ERROR, STACK_UNDERFLOW_ERROR, NEGATIVE_CAPACITY_ERROR} from './stack-errors';
 
 let stack;
 
-describe.only('the stack', () => {
+describe('the stack', () => {
   beforeEach(() => {
     stack = new Stack();
   });
@@ -60,6 +60,6 @@ describe.only('the stack', () => {
   it('accepts only positive capacity', () => {
     (() => {
       stack.setCapacity(-3);
-    }).should.throw(NEGATIVE_CAPACITY);
+    }).should.throw(NEGATIVE_CAPACITY_ERROR);
   });
 });
