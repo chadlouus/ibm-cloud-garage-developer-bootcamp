@@ -23,7 +23,7 @@ describe.only('martin fowler\'s movie refactoring example', () => {
   let regular3;
 
   beforeEach( () => {
-    customer = makeCustomerFrom('Dummy Customer, Jr.');
+    customer = new makeCustomerFrom('Dummy Customer, Jr.');
 
     childrens1 = makeMovieFrom('Childrens1', CHILDRENS);
     childrens2 = makeMovieFrom('Childrens2', CHILDRENS);
