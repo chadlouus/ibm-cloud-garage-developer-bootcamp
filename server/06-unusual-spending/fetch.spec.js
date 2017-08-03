@@ -1,24 +1,21 @@
 import {replace, when} from '../../test-helper';
+import * as months from './months';
 
-describe.only('fetch', () => {
+describe('fetch', () => {
+  it('months api works', () => {
+    months.prior().should.equal('prior');
+  });
+
   it('orchestrates months and api', () => {
-    const months = replace('./months');
-    const api = replace('./api').api;
+    const fetch = require('./fetch').fetch;
 
-    let fetch;
+    const payments = fetch('user-id');
 
-    when(months.prior()).thenReturn('prior-month');
-    when(months.current()).thenReturn('current-month');
-    const priorMonthPayments = {month: {year: 2016, month: 12}, payments: [{amount: 80, category: 'golf'}, {amount: 490, category: 'dinner'}]};
-    const currentMonthPayments = {month: {year: 2017, month: 1}, payments: [{amount: 20, category: 'uber'}, {amount: 510, category: 'dinner'}]};
-    when(api('user-id', 'prior-month')).thenReturn(priorMonthPayments);
-    when(api('user-id', 'current-month')).thenReturn(currentMonthPayments);
-
-    fetch = require('./fetch').fetch;
-
-    let payments = fetch('user-id');
-
-    const expectedPayments = [priorMonthPayments, currentMonthPayments];
+    const priorMonthPayments = {month: {year: 2017, month: 7}, payments: [{amount: 80, category: 'golf'}, {amount: 490, category: 'dinner'}]};
+    const currentMonthPayments = {month: {year: 2017, month: 8}, payments: [{amount: 20, category: 'uber'}, {amount: 510, category: 'dinner'}]};
+    const expectedPayments = [];
+    expectedPayments.push(priorMonthPayments);
+    expectedPayments.push(currentMonthPayments);
 
     payments.should.deepEqual(expectedPayments);
   });

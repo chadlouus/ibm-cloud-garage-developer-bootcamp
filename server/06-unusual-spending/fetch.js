@@ -1,9 +1,9 @@
-import {prior, current} from './months';
+import * as months from './months';
 import {api} from './api';
 
 const fetch = (userId) => {
-  let priorMonth = prior();
-  let currentMonth = current();
+  let priorMonth = months.prior();
+  let currentMonth = months.current();
   let priorMonthPayments = api(userId, priorMonth);
   let currentMonthPayments = api(userId, currentMonth);
 
