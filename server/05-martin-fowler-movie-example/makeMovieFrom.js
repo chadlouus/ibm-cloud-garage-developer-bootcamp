@@ -9,11 +9,11 @@ moviePriceCodes[REGULAR] = (daysRented) => {
     return total;
 };
 
-moviePriceCodes[NEW_RELEASE] =  (daysRented) => {
+moviePriceCodes[NEW_RELEASE] = (daysRented) => {
   return daysRented * 3;
 };
 
-moviePriceCodes[CHILDRENS] =  (daysRented) => {
+moviePriceCodes[CHILDRENS] = (daysRented) => {
   let total = 1.5;
   if (daysRented > 3) {
     total += (daysRented - 3) * 1.5;

@@ -26,7 +26,7 @@ let makeCustomerFrom = (name) => {
 
     statement() {
       let statement = 'Rental Record for ' + name + '\n';
-      let total = 0;
+      //let total = 0;
 
       for (let i = 0; i < rentals.length; i++) {
         let rental = rentals[i];
