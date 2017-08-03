@@ -8,7 +8,7 @@ function primeFactorsOf(number) {
   return factors;
 }
 
-describe.only('the prime numbers canary spec', () => {
+describe('the prime numbers canary spec', () => {
   it('canary test', () => {
     true.should.be.true();
   });
