@@ -1,5 +1,3 @@
-let categorize = () => {
-
-};
+const categorize = () => {};
 
 export {categorize};

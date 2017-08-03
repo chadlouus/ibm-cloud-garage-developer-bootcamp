@@ -1,5 +1,3 @@
-let email = () => {
-
-};
+const email = () => {};
 
 export {email};
