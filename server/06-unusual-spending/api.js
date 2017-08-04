@@ -1,6 +1,8 @@
 import {payments} from './payments';
 
 const api = (userId, month) => {
-  return payments.filter((payment) => JSON.stringify(payment.month) === JSON.stringify(month.month))[0];
+  const filteredArray = payments.filter((payment) => JSON.stringify(payment.month) === JSON.stringify(month.month));
+  return filteredArray.length > 0 ? filteredArray[0] : null;
 };
+
 export {api};
